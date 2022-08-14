@@ -7,9 +7,9 @@ function returnToMain(){
 	view.style.display="none";
 }
 function fopen(blog){
-	var target="posts/"+blog;
-	view_iframe.src=target;
+	var target="posts/"+blog+"";
+	viewIframe.src=target;
 }
 window.onload=function(){
-	fopen("__NONE__");
+	fopen("__NONE__.html");
 }
