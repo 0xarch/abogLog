@@ -2,17 +2,25 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<title>ANXUS'S BLOG</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="sources/style.css"><script src="scripts/js.js"></script>
 </head>
 <body>
 	
-	<div class="main">
+	<div id="nagi" class="nagivi"><div id="nagi_in">
 		尚未完全建立！
+<div onclick="fopen('wttr')" id="wttr" class="blogs"><img src="posts_sources/wttr" width="90%" height="90%" class="blog_header_img"/>wttr</div>
+	</div></div>
+	<div id="view">
+		<iframe id="view_iframe" frameborder=0></iframe>
 	</div>
-	<div class="header">
+	<div id="header">
 		<font>ANXUS'S BLOG</font>
+		<div id="control">
+			<div class="buttons" onclick="returnToMain()"> RETURN TO MAIN </div>
+			<div class="buttons" onclick="intoView()"> INTO VIEW </div>
+		</div>
 	</div>
-	<div class="footer">
+	<div id="footer">
 		<div id="support">
 			<font>对本网站的支持：</font>
 			<a href="https://github.com" target=_blank>Github</a>
