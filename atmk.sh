@@ -1,5 +1,8 @@
 #!/bin/sh
 cp $1 posts_tmp/
+tmp_num=$(cat posts/__MAIN__)
+let next_num=$tmp_num+1
+echo $next_num > posts/__MAIN__
 tmp_pic=$1
 tmp_name=$2
 mv posts_tmp/${tmp_pic##*/} posts_sources/$2

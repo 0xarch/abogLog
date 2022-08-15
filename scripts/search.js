@@ -1,5 +1,7 @@
 var blogs=[
 "博客建立","第二篇测试",
+"博客建立历程",
+"第三篇测试",
 ];
 function searchInBlog(){
 	var needs=document.getElementById("searchIn").value;

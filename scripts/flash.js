@@ -22,7 +22,6 @@ function returnToMain(){
 		}
 	},5);
 	view.style.display="none";
-	searchIn.style.position="fixed";
 	searchIn.style.left="42%";
 	searchIn.style.width="16%";
 }
