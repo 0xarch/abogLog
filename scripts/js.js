@@ -55,10 +55,10 @@ function fopen(blog){
 function viewClose(closeNumber){
 	if(closeNumber==1){
 		if(blog_count==2){
-		viewIframe2Div.style.display="none";
-		viewIframe1.src=viewIframe2.getAttribute("src");
-		onlyOne();
-		blog_count=1;
+			viewIframe2Div.style.display="none";
+			viewIframe1.src=viewIframe2.getAttribute("src");
+			onlyOne();
+			blog_count=1;
 		}
 		else{
 			blog_count=0;
@@ -67,8 +67,10 @@ function viewClose(closeNumber){
 		}
 	}
 	else if(closeNumber==2){
+		blog_count=1;
 		onlyOne();
 	}
+	console.log(blog_count);
 }
 window.onload=function(){
 	//fopen("__NONE__.html");
