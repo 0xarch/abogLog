@@ -3,12 +3,13 @@ function intoView(){
 	var spread = setInterval(function(){
 		nagi.style.width=i+"%";
 		i-=2;
-		console.log(i);
 		if(i<10){
 			clearInterval(spread);
 		}
 	},5);
 	view.style.display="block";
+	searchIn.style.left="1%";
+	searchIn.style.width="8%";
 }
 function returnToMain(){
 	var i=10;
@@ -16,11 +17,12 @@ function returnToMain(){
 	var spread = setInterval(function(){
 		nagi.style.width=i+"%";
 		i+=2;
-		console.log(i);
 		if(i>100){
 			clearInterval(spread);
 		}
 	},5);
 	view.style.display="none";
-	
+	searchIn.style.position="fixed";
+	searchIn.style.left="42%";
+	searchIn.style.width="16%";
 }

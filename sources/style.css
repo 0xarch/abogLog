@@ -22,7 +22,6 @@ body{
 	color:black;
 	top:0px;
 	box-shadow:0px 0px 10px black;
-	z-index:5;
 }
 #nagi{
 	position:fixed;
@@ -43,13 +42,13 @@ body{
 	color:black;
 	bottom:0px;
 	box-shadow:0px 0px 10px black;
-	z-index:5;
 }
 .fixedBar{
 	position:fixed;
 	width:100%;
 	left:0px;
 	opacity:0.7;
+	z-index:1;
 }
 #view{
 	position:fixed;
@@ -118,15 +117,19 @@ body{
 	border-radius:3px;
 	height:3%;
 	width:7%;
-	position:fixed;
+	display:block;
 	border:0px solid white;
 	text-align:center;
+	opacity:0.7;
+	position:fixed;
+	z-index:15;
 }
 #searchIn{
-	top:1%;
-	right:1%;
+	top:6%;
+	position:fixed;
+	z-index:15;
 }
 #searchGlobal{
 	top:1%;
-	right:9%;
+	right:1%;
 }
