@@ -1,31 +1,4 @@
 var blog_count=0;
-function intoView(atFirst){
-	var i=100;
-	var spread = setInterval(function(){
-		nagi.style.width=i+"%";
-		i-=5;
-		console.log(i);
-		if(i<10){
-			clearInterval(spread);
-		}
-	},5);
-	view.style.display="block";
-}
-function returnToMain(){
-	var i=10;
-	view.style.display="none";
-	var spread = setInterval(function(){
-		nagi.style.width=i+"%";
-		i+=5;
-		console.log(i);
-		if(i>100){
-			clearInterval(spread);
-		}
-	},5);
-
-	
-}
-
 function onlyOne(){
 	viewIframe1Div.style.width="97%";
 	viewIframe1Div.style.height="97%";
@@ -74,6 +47,7 @@ function viewClose(closeNumber){
 }
 window.onload=function(){
 	//fopen("__NONE__.html");
+	support.style.display="none";
 	returnToMain();
 	protect.style.display="none";
 }

@@ -114,3 +114,19 @@ body{
 	display:block;
 	box-shadow:0px 0px 0px white;
 }
+.searchInput{
+	border-radius:3px;
+	height:3%;
+	width:7%;
+	position:fixed;
+	border:0px solid white;
+	text-align:center;
+}
+#searchIn{
+	top:1%;
+	right:1%;
+}
+#searchGlobal{
+	top:1%;
+	right:9%;
+}
