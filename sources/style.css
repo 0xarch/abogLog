@@ -12,6 +12,7 @@ body{
 	width:100%;
 	background-color:black;
 	color:white;
+	z-index:100;
 }
 #header{
 	height:5%;
