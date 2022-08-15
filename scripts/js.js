@@ -1,11 +1,29 @@
 var blog_count=0;
-function intoView(){
-	nagi.style.width="10%";
+function intoView(atFirst){
+	var i=100;
+	var spread = setInterval(function(){
+		nagi.style.width=i+"%";
+		i-=5;
+		console.log(i);
+		if(i<10){
+			clearInterval(spread);
+		}
+	},5);
 	view.style.display="block";
 }
 function returnToMain(){
-	nagi.style.width="100%";
+	var i=10;
 	view.style.display="none";
+	var spread = setInterval(function(){
+		nagi.style.width=i+"%";
+		i+=5;
+		console.log(i);
+		if(i>100){
+			clearInterval(spread);
+		}
+	},5);
+
+	
 }
 
 function onlyOne(){
@@ -26,12 +44,13 @@ function fopen(blog){
 		viewIframe1.src=target;
 		onlyOne();
 		blog_count=1;
+		intoView();
 	}else{
 		viewIframe2.src=target;
 		haveTwo();
 		blog_count=2;
 	}
-		intoView();
+		
 }
 function viewClose(closeNumber){
 	if(closeNumber==1){
@@ -48,10 +67,11 @@ function viewClose(closeNumber){
 		}
 	}
 	else if(closeNumber==2){
-		viewIframe2Div.style.display="none";
+		onlyOne();
 	}
 }
 window.onload=function(){
-	fopen("__NONE__.html");
+	//fopen("__NONE__.html");
+	returnToMain();
 	protect.style.display="none";
 }
