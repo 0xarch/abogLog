@@ -7,20 +7,17 @@ body{
 	background:url("bg.jpg");
 }
 #header{
-	position:fixed;
-	width:100%;
 	height:5%;
 	background-color:rgb(212,212,213);
 	color:black;
 	top:0px;
-	left:0px;
 	box-shadow:0px 0px 10px black;
 	z-index:5;
 }
 #nagi{
 	position:fixed;
-	width:180px;
-	height:92%;
+	width:10%;
+	height:95%;
 	left:0px;
 	top:5%;
 	box-shadow:0px 0px 10px black;
@@ -29,26 +26,31 @@ body{
 	z-index:1;
 	text-align:center;
 	color:white;
-}
-#view{
-	position:fixed;
-	width:90%;
-	height:92%;
-	left:180px;
-	top:5%;
-	text-align:center;
+	overflow:auto;
 }
 #footer{
-	position:fixed;
-	width:100%;
 	height:3%;
 	background-color:rgb(212,212,213);
 	color:black;
 	bottom:0px;
-	left:0px;
 	box-shadow:0px 0px 10px black;
 	z-index:5;
 }
+.fixedBar{
+	position:fixed;
+	width:100%;
+	left:0px;
+	opacity:0.7;
+}
+#view{
+	position:fixed;
+	width:90%;
+	height:95%;
+	left:10%;
+	top:5%;
+	text-align:center;
+}
+
 .blogs{
 	width:150px;
 	height:120px;
@@ -56,7 +58,8 @@ body{
 	margin:auto;
 	border-radius:5px;
 	display:inline-block;
-	background-color:white;
+	background-color:rgb(255,255,255);
+	opacity:0.5;
 	font-size:15px;
 	text-align:center;
 	color:black;
@@ -80,14 +83,26 @@ body{
 	background-color:white;
 	border:3px solid white;
 }
-#viewIframe{
+.viewIframes{
 	position:relative;
-	top:2%;
+	top:1%;
 	bottom:2%;
+	background-color:white;
+	display:block;
+}
+.viewIframeDiv{
+	position:relative;
+	top:1%;
+	bottom:1%;
 	opacity:0.5;
-	border-radius:15px;
+	border-radius:3px;
+	border:3px solid white;
 	background-color:white;
 	box-shadow:0px 0px 15px white;
+	display:inline-block;
 }
-
-
+.viewButtons{
+	position:relative;
+	display:block;
+	box-shadow:0px 0px 0px white;
+}

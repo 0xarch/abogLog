@@ -1,26 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <head>
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	<title>ANXUS'S BLOG</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" /><title>ANXUS'S BLOG</title>
+	
 	<link rel="stylesheet" type="text/css" href="sources/style.css"><script src="scripts/js.js"></script>
 </head>
 <body>
 	
 	<div id="nagi" class="nagivi"><div id="nagi_in">
 		尚未完全建立！
+<div onclick="fopen('第二篇测试.html')" id="第二篇测试" class="blogs"><img src="posts_sources/第二篇测试" width="90%" height="90%" class="blog_header_img"/>第二篇测试</div>
 <div onclick="fopen('博客建立.html')" id="博客建立" class="blogs"><img src="posts_sources/博客建立" width="90%" height="90%" class="blog_header_img"/>博客建立</div>
 	</div></div>
 	<div id="view">
-		<iframe id="viewIframe" frameborder=0 title="None" width="15%" height="96%"></iframe>
-	</div>
-	<div id="header">
-		<font>ANXUS'S BLOG</font>
-		<div id="control">
-			<div class="buttons" onclick="returnToMain()"> RETURN TO MAIN </div>
-			<div class="buttons" onclick="intoView()"> INTO VIEW </div>
+		<div id="viewIframe1Div" class="viewIframeDiv">
+			<button class="buttons viewButtons" onclick="viewClose(1)">[X]</button>
+			<iframe id="viewIframe1" class="viewIframes" frameborder=0 title="None" width="95%" height="96%"></iframe>
+		</div>
+		<div id="viewIframe2Div" class="viewIframeDiv">
+			<button class="buttons viewButtons" onclick="viewClose(2)">[X]</button>
+			<iframe id="viewIframe2" class="viewIframes" frameborder=0 title="None" width="95%" height="96%"></iframe>
 		</div>
 	</div>
-	<div id="footer">
+	<div id="header" class="fixedBar">
+		<font>ANXUS'S BLOG</font>
 		<div id="support">
 			<font>对本网站的支持：</font>
 			<a href="https://github.com" target=_blank>Github</a>
@@ -29,3 +31,5 @@
 			<a href="https://cn.bing.com" target=_blank>Bing</a>
 		</div>
 	</div>
+</body>
+</html>
