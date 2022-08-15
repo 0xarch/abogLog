@@ -6,6 +6,11 @@ body{
 	font-family:"g98fx";
 	background:url("bg.jpg");
 }
+#protect{
+	position:fixed;
+	height:100%;
+	width:100%;
+}
 #header{
 	height:5%;
 	background-color:rgb(212,212,213);

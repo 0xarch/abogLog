@@ -53,4 +53,5 @@ function viewClose(closeNumber){
 }
 window.onload=function(){
 	fopen("__NONE__.html");
+	protect.style.display="none";
 }
