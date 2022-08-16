@@ -33,6 +33,5 @@ function viewClose(closeNumber){
 }
 window.onload=function(){
 	$(support).hide();
-	returnToMain();
 	$(protect).hide();
 }
