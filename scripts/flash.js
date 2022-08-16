@@ -6,7 +6,8 @@ function intoView(){
 	flex("into");
 }
 function returnToMain(){
-	$(viewIframe1Div).hide().animate({width:"0%"}).animate({height:"0%"});
+	HideOne();
+	HideTwo();
 	$(nagi).animate({width:"100%"});
 	$(searchIn).animate({left:"42%",width:"16%"});
 	$(view).hide();
@@ -14,25 +15,32 @@ function returnToMain(){
 }
 var _blogs=document.getElementsByClassName("blogs");
 console.log(_blogs);
-function setter(toStatus){
-		for(var i=0;i<_blogs.length;i++){
-			$(_blogs.item(i)).animate({width:toStatus+'%'},1);
-		}
-	}
 function blogTo(end){
 		for(var i=0;i<_blogs.length;i++){
-			$(_blogs.item(i)).animate({width:end+'%'},10);
+			$(_blogs.item(i)).animate({width:end+'%'},400);
 		}
 }
-function onlyOne(){
+function ShowOne(){
 	$(viewIframe1Div).show();
-	$(viewIframe1Div).animate({width:"97%"}).animate({height:"97%"});
-	$(viewIframe2Div).animate({width:"0%"}).animate({height:"0%"});
-	$(viewIframe2Div).hide();
 }
-function haveTwo(){
+function MaxOne(){
+	$(viewIframe1Div).animate({width:"98%",height:"98%"});
+}
+function HideOne(){
+	$(viewIframe1Div).hide();
+	$(viewIframe1Div).animate({width:"0%",height:"0%"},500);
+}
+function ShowTwo(){
 	$(viewIframe2Div).show();
-	$(viewIframe1Div).animate({width:"49%"});
-	$(viewIframe2Div).animate({width:"49%"}).animate({height:"97%"});
-	
+}
+function MaxTwo(){
+	$(viewIframe2Div).animate({width:"94%",height:"98%"});
+}
+function HideTwo(){
+	$(viewIframe2Div).hide();
+	$(viewIframe2Div).animate({width:"0%",height:"0%"},500);
+}
+function TilingTwos(){
+	$(viewIframe1Div).animate({width:"47%",height:"97%"});
+	$(viewIframe2Div).animate({width:"47%",height:"97%"});
 }
