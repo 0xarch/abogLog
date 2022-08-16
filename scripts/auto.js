@@ -16,3 +16,18 @@ function flex(vector){
 		}
      }
 }
+function hideHeader(ifHide){
+	if(ifHide==1){
+		header.style.display="block";
+		nagi.style.height="95%";
+		view.style.height="95%";
+		nagi.style.top="5%";
+		view.style.top="5%";
+	}else{
+		header.style.display="none";
+		nagi.style.height="100%";
+		view.style.height="100%";
+		nagi.style.top="0%";
+		view.style.top="0%";
+	}
+}

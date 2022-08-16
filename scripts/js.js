@@ -46,7 +46,6 @@ function viewClose(closeNumber){
 	console.log(blog_count);
 }
 window.onload=function(){
-	//fopen("__NONE__.html");
 	support.style.display="none";
 	returnToMain();
 	protect.style.display="none";
