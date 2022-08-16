@@ -24,7 +24,7 @@ function ShowOne(){
 	$(viewIframe1Div).show();
 }
 function MaxOne(){
-	$(viewIframe1Div).animate({width:"98%",height:"98%"});
+	$(viewIframe1Div).animate({width:"99%",height:"98%"});
 }
 function HideOne(){
 	$(viewIframe1Div).hide();
@@ -34,13 +34,13 @@ function ShowTwo(){
 	$(viewIframe2Div).show();
 }
 function MaxTwo(){
-	$(viewIframe2Div).animate({width:"94%",height:"98%"});
+	$(viewIframe2Div).animate({width:"99%",height:"98%"});
 }
 function HideTwo(){
 	$(viewIframe2Div).hide();
 	$(viewIframe2Div).animate({width:"0%",height:"0%"},500);
 }
 function TilingTwos(){
-	$(viewIframe1Div).animate({width:"47%",height:"97%"});
-	$(viewIframe2Div).animate({width:"47%",height:"97%"});
+	$(viewIframe1Div).animate({width:"49%",height:"97%"});
+	$(viewIframe2Div).animate({width:"49%",height:"97%"});
 }
