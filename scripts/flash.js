@@ -1,65 +1,38 @@
 var GlobalFlashSpeed=10;
 function intoView(){
-	var i=100;
-	var spread = setInterval(function(){
-		nagi.style.width=i+"%";
-		//nagi.style.background_color="rgb("+i+","+i+","+i+")";
-		i-=2;
-		if(i<10){
-			clearInterval(spread);
-		}
-	},GlobalFlashSpeed);
-	view.style.display="block";
-	searchIn.style.left="1%";
-	searchIn.style.width="8%";
+	$(nagi).animate({width:"10%"});
+	$(view).show();
+	$(searchIn).animate({left:"1%",width:"8%"});
 	flex("into");
 }
 function returnToMain(){
-	var i=10;
-	
-	var spread = setInterval(function(){
-		nagi.style.width=i+"%";
-		//nagi.style.background_color="rgb("+i+","+i+","+i+")";
-		i+=2;
-		if(i>100){
-			clearInterval(spread);
-		}
-	},GlobalFlashSpeed);
-	view.style.display="none";
-	searchIn.style.left="42%";
-	searchIn.style.width="16%";
+	$(viewIframe1Div).hide().animate({width:"0%"}).animate({height:"0%"});
+	$(nagi).animate({width:"100%"});
+	$(searchIn).animate({left:"42%",width:"16%"});
+	$(view).hide();
 	flex("toMain");
 }
-
 var _blogs=document.getElementsByClassName("blogs");
 console.log(_blogs);
 function setter(toStatus){
 		for(var i=0;i<_blogs.length;i++){
-			_blogs.item(i).style.width=toStatus+"%";
+			$(_blogs.item(i)).animate({width:toStatus+'%'},1);
 		}
 	}
-function blogTo(start,end,ifDemo){
-	if(ifDemo==true){
-		if(start>=end){
-			var i=start;
-			var doChanging=setInterval(function(){
-				setter(i);
-				if(i==end){
-					clearInterval(doChanging);
-				}
-				i--;
-			},GlobalFlashSpeed);
-		}else{
-			var i=start;
-			var doChanging=setInterval(function(){
-				setter(i);
-				if(i==end){
-					clearInterval(doChanging);
-				}
-				i++;
-			},GlobalFlashSpeed);
+function blogTo(end){
+		for(var i=0;i<_blogs.length;i++){
+			$(_blogs.item(i)).animate({width:end+'%'},10);
 		}
-	}else{
-		setter(end);
-	}
+}
+function onlyOne(){
+	$(viewIframe1Div).show();
+	$(viewIframe1Div).animate({width:"97%"}).animate({height:"97%"});
+	$(viewIframe2Div).animate({width:"0%"}).animate({height:"0%"});
+	$(viewIframe2Div).hide();
+}
+function haveTwo(){
+	$(viewIframe2Div).show();
+	$(viewIframe1Div).animate({width:"49%"});
+	$(viewIframe2Div).animate({width:"49%"}).animate({height:"97%"});
+	
 }
