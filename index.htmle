@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<head>
-	<meta http-equiv="content-type" content="text/html;charset=utf-8" /><title>ABOG-LOG</title>
-	<script src="scripts/js.js"></script><script src="scripts/flash.js"></script></script><script src="scripts/search.js"></script><script src="scripts/auto.js"></script>
+<!DOCTYPE html><head><meta http-equiv="content-type" content="text/html;charset=utf-8" /><title>ABOG-LOG</title>
+	<script src="scripts/js.js"></script> <script src="scripts/flash.js"></script> <script src="scripts/search.js"></script>
+	<script src="scripts/auto.js"></script> <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="sources/style.css">
 </head>
-<body style="background:url("https://www.talklee.com/api/bing/");">
+<body style="background:url('https://www.talklee.com/api/bing/');">
 	
 	<div id="nagi" class="nagivi"><div id="nagi_in">
-		<input placeholder="站内搜索" id="searchIn" class="searchInput" oninput="searchInBlog()" type="text"/>
+		<input placeholder="站内搜索" id="searchIn" oninput="searchInBlog()" οnkeypress="if(event.keyCode==13) return false;" type="text"/>
 <div onclick="fopen('博客建立历程.html')" id="博客建立历程" class="blogs"><img src="posts_sources/博客建立历程" width="90%" height="90%" class="blog_header_img"/>博客建立历程</div>
 <div onclick="fopen('第二篇测试.html')" id="第二篇测试" class="blogs"><img src="posts_sources/第二篇测试" width="90%" height="90%" class="blog_header_img"/>第二篇测试</div>
 <div onclick="fopen('博客建立.html')" id="博客建立" class="blogs"><img src="posts_sources/博客建立" width="90%" height="90%" class="blog_header_img"/>博客建立</div>
@@ -15,19 +14,25 @@
 	<div id="view">
 		<div id="viewIframe1Div" class="viewIframeDiv">
 			<button class="buttons viewButtons" onclick="viewClose(1)">[X]</button>
-			<iframe id="viewIframe1" class="viewIframes" frameborder=0 title="None" width="90%" height="96%"></iframe>
+			
+			<iframe id="viewIframe1" class="viewIframes" frameborder=0 title="None" width="85%" height="96%"></iframe>
+			<div id="viewComment1" class="viewComments" overflow="auto">
+				<input placeholder="发表评论" onkeypress="if(event.keyCode==13)send(1);" id="commenter1" class="commenters"/>
+			</div>
 		</div>
 		<div id="viewIframe2Div" class="viewIframeDiv">
 			<button class="buttons viewButtons" onclick="viewClose(2)">[X]</button>
-			<iframe id="viewIframe2" class="viewIframes" frameborder=0 title="None" width="90%" height="96%"></iframe>
+			<iframe id="viewIframe2" class="viewIframes" frameborder=0 title="None" width="85%" height="96%"></iframe>
+			<div id="viewComment2" class="viewComments">
+				<input placeholder="发表评论" onkeypress="if(event.keyCode==13)send(2);"  id="commenter2" class="commenters"/>
+			</div>
 		</div>
 	</div>
-	<div id="header" class="fixedBar">
-		<font >ABOG-LOG</font>
+	<div id="header">
+		<font >ABOG-LOG-CATARCH</font>
 		<div id="searchDiv">
-		
 		<form action="https://www4.bing.com/search" method="get" target="_blank">
-			<input placeholder="必应搜索" id="searchGlobal" class="searchInput" name="q"/></div>
+			<input placeholder="必应搜索" id="searchGlobal" name="q"/></div>
 		</form>
 		<div id="support">
 			<font>对本网站的支持：</font>

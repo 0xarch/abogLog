@@ -1,5 +1,6 @@
 var blogs=[
 "博客建立",
+"第二篇测试",
 "博客建立历程",
 ];
 function searchInBlog(){

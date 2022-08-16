@@ -1,0 +1,6 @@
+{
+	"main":[
+		{"blogName":"博客建立","id":"ADMIN","text":"测试博客评论系统载入"},
+		{"blogName":"第二篇测试","id":"ADMIN","text":"测试博客评论系统多文章载入"}
+	]
+}
