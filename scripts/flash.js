@@ -39,6 +39,14 @@ function blogFlex(arg){
 		}
 	}
 }
+function autoSwitch(args){
+	if(args.includes("Vb")){
+		SwitchViewButtons("HWM");
+	}
+	if(args.includes("Nb")){
+		SwitchNagiBar();
+	}
+}
 function SwitchViewButtons(target){
 	if(isMobile){
 		if(target.includes("H")){
@@ -59,6 +67,12 @@ function SwitchViewButtons(target){
 				console.log("Switched viewButtons : Margin");
 			}
 		}
+	}
+}
+function SwitchNagiBar(){
+	if(isMobile){
+		$(nagi).animate({width:"20%"});
+		$(view).animate({width:"80%"});
 	}
 }
 function ToggleHeader(ifHide){

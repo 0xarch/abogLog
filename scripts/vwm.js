@@ -1,38 +1,44 @@
 var Width="94%";
 var Height="92%";
 var Width_Tiling="47%";
+function VOutput(Sprite,Status,Sprite_,Status_){
+	console.log("VWM Output : [ "+Sprite+" is "+Status+" ]!");
+	if(Sprite_!=undefined){
+		console.log("VWM Output : [ "+Sprite_+" is "+Status_+" ]!");
+	}
+}
 function fopen(blog){
 	var target="posts/"+blog+"";
-	console.log("VWM Input: Open View Window with "+target);
+	VOutput("OpenWindow",target);
 	if(blog_count==0){
 		intoView();
 		viewIframe1.src=target;
 		ShowOne();
 		MaxOne();
-		SwitchViewButtons("HWM");
+		autoSwitch("VbNb");
 		ifOneHaveOpen=true;
 		blog_count=1;
 		
 	}else{
 		if(ifTwoHaveOpen==false){
 			if(viewIframe1.getAttribute("src")==target){
-				console.log("VWM Output: Already opened");
+				VOutput("Warning","Already Opened");
 				return;
 			}
 			ShowTwo();
 			TilingTwos();
-			SwitchViewButtons("HWM");
+			autoSwitch("VbNb");
 			ifTwoHaveOpen=true;
 			viewIframe2.src=target;
 		}else
 		if(ifOneHaveOpen==false){
 			if(viewIframe2.getAttribute("src")==target){
-				console.log("VWM Output: Already opened");
+				VOutput("Warning","Already Opened");
 				return;
 			}
 			viewIframe1.src=target;
 			ShowOne();
-			SwitchViewButtons("HWM");
+			autoSwitch("VbNb");
 			TilingTwos();
 			ifOneHaveOpen=true;
 		}else{
@@ -40,44 +46,44 @@ function fopen(blog){
 		}
 		blog_count=2;
 	}
-	console.log("Switched Blog Count :"+blog_count);
-	console.log("VWM Output: VW1 is "+ifOneHaveOpen+"  VW2 is "+ifTwoHaveOpen);
+	VOutput("Blog Count",blog_count);
+	VOutput("ViewWindow1",ifOneHaveOpen,"ViewWindow2",ifTwoHaveOpen);
 }
 function ShowOne(){
 	$(viewIframe1Div).show();
-	console.log("Switched viewIframe1Div : Show");
+	VOutput("viewWindow<1>Container","Show");
 }
 function MaxOne(){
 	$(viewIframe1Div).animate({width:Width,height:Height});
-	console.log("Switched viewIframe1Div : Max");
+	VOutput("viewWindow<1>Container","Max");
 }
 function HideOne(){
 	$(viewIframe1Div).hide();
 	$(viewIframe1Div).animate({width:"0%",height:"0%"},GlobalFlashSpeed*50);
-	console.log("Switched viewIframe1Div : Hide");
+	VOutput("viewWindow<1>Container","Hide");
 }
 function ShowTwo(){
 	$(viewIframe2Div).show();
-	console.log("Switched viewIframe2Div : Show");
+	VOutput("viewWindow<2>Container","Show");
 }
 function MaxTwo(){
 	$(viewIframe2Div).animate({width:Width,height:Height});
-	console.log("Switched viewIfram2Div : Max");
+	VOutput("viewWindow<2>Container","Max");
 }
 function HideTwo(){
 	$(viewIframe2Div).hide();
 	$(viewIframe2Div).animate({width:"0%",height:"0%"},GlobalFlashSpeed*50);
-	console.log("Switched viewIframe2Div : Hide");
+	VOutput("viewWindow<2>Container","Hide");
 }
 function TilingTwos(){
 	if(isMobile==true){
 		$(viewIframe1Div).animate({width:Width,height:Width_Tiling});
 		$(viewIframe2Div).animate({width:Width,height:Width_Tiling});
-		console.log("Switched viewIframe2Div viewIframe2Div : Tilings ( Vert Tilings )");
+		VOutput("viewWindow<1,2>Container","Vert-Tiling");
 	}else{
 		$(viewIframe1Div).animate({width:Width_Tiling,height:Height});
 		$(viewIframe2Div).animate({width:Width_Tiling,height:Height});
-		console.log("Switched viewIframe1Div viewIframe2Div : Tilings");
+		VOutput("viewWindow<1,2>Container","Tiling");
 	}
 }
 function viewClose(closeNumber){
