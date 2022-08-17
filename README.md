@@ -6,16 +6,16 @@ Clone this repository
 
 <h2>Use:
 	<h3>Create:
-	Run atmk.sh <blog image header> <blog name>
-	Edit posts/<blog name>.html
+	Run atmk.sh [blog image header] [blog name] <br>
+	Edit posts/[blog name].html <br>
 	<h3>Delete:
-	Run atrm.sh <blog name>
+	Run atrm.sh [blog name] <br>
 
 <h2>Change the stylesheet:
-Edit sources/style.css
+Edit sources/style.css <br>
 
 <h2>Custom JavaScript:
-Edit the .js file under scripts/
+Edit the .js file under scripts/ <br>
 
 <h2>Example demonstration:
-https://catarch.vercel.app
+https://catarch.vercel.app <br>
