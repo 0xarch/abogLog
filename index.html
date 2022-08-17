@@ -1,22 +1,21 @@
 <!DOCTYPE html><head><meta http-equiv="content-type" content="text/html;charset=utf-8" /><title>ABOG-LOG</title>
-	<script src="scripts/js.js"></script> <script src="scripts/flash.js"></script> <script src="scripts/search.js"></script>
-	<script src="scripts/auto.js"></script> <script src="scripts/jquery.min.js"></script> <script src="scripts/bg-blur.js"></script>
+	<script src="scripts/js.js"></script> <script src="scripts/flash.js"></script>
+	<script src="scripts/auto.js"></script> <script src="scripts/search.js"></script>
+	<script src="scripts/jquery.min.js"></script> <script src="scripts/vwm.js"></script>
 	<link rel="stylesheet" type="text/css" href="sources/style.css">
 </head>
-<body style="background:url('https://www.talklee.com/api/bing/');">
-	
+<body>
+
 	<div id="nagi" class="nagivi"><div id="nagi_in">
 		<input placeholder="站内搜索" id="searchIn" oninput="searchInBlog()" οnkeypress="if(event.keyCode==13) return false;" type="text"/>
-<div onclick="fopen('博客建立历程.html')" id="博客建立历程" class="blogs"><img src="posts_sources/博客建立历程" width="90%" height="90%" class="blog_header_img"/>博客建立历程</div>
-<div onclick="fopen('博客建立.html')" id="博客建立" class="blogs"><img src="posts_sources/博客建立" width="90%" height="90%" class="blog_header_img"/>博客建立</div>
 	</div></div>
 	<div id="view">
 		<div id="viewIframe1Div" class="viewIframeDiv">
-			<button class="buttons viewButtons" onclick="viewClose(1)">[X]</button>
+			<button class="viewButtons" onclick="viewClose(1)">关闭</button>
 			<iframe id="viewIframe1" class="viewIframes" frameborder=0 title="None" width="85%" height="96%"></iframe>
 		</div>
 		<div id="viewIframe2Div" class="viewIframeDiv">
-			<button class="buttons viewButtons" onclick="viewClose(2)">[X]</button>
+			<button class="viewButtons" onclick="viewClose(2)">关闭</button>
 			<iframe id="viewIframe2" class="viewIframes" frameborder=0 title="None" width="85%" height="96%"></iframe>
 		</div>
 	</div>
@@ -27,6 +26,7 @@
 			<input placeholder="必应搜索" id="searchGlobal" name="q"/></div>
 		</form> 
 	</div>
+	<canvas id="backgroundCanvas"></canvas>
 	<div id="protect">尚未加载完成</div>
 </body>
 </html>
