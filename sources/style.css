@@ -65,13 +65,6 @@
 	top:0;
 	margin:5px;
 }
-.buttons{
-	display:inline-block;
-	border-radius:5px;
-	box-shadow:0px 0px 3px black;
-	background-color:white;
-	border:3px solid white;
-}
 .viewIframes{
 	position:relative;
 	top:1%;
@@ -91,7 +84,11 @@
 .viewButtons{
 	position:relative;
 	display:block;
-	box-shadow:0px 0px 0px white;
+	background-color:red;
+	border-radius:8px;
+	border:3px solid white;
+	color:white;
+	height:3%;
 }
 .viewComments{
 	position:relative;

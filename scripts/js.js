@@ -4,57 +4,40 @@ var ifTwoHaveOpen=false;
 function fopen(blog){
 	var target="posts/"+blog+"";
 	if(blog_count==0){
+		intoView();
+		viewIframe1.src=target;
 		ShowOne();
 		MaxOne();
+		SwitchViewButtons("Width Height");
 		ifOneHaveOpen=true;
-		viewIframe1.src=target;
 		blog_count=1;
-		intoView();
+		
 	}else{
-		if(ifTwoHaveOpen==false){	
+		if(ifTwoHaveOpen==false){
 			ShowTwo();
 			TilingTwos();
+			SwitchViewButtons("Width Height");
 			ifTwoHaveOpen=true;
 			viewIframe2.src=target;
 		}else
 		if(ifOneHaveOpen==false){
+			viewIframe1.src=target;
 			ShowOne();
+			SwitchViewButtons("Width Height");
 			TilingTwos();
 			ifOneHaveOpen=true;
-			viewIframe1.src=target;
 		}else{
 			viewIframe1.src=target;
 		}
 		blog_count=2;
 	}
-	console.log("now have"+blog_count);
-	console.log("One is "+ifOneHaveOpen+"  Two is "+ifTwoHaveOpen);
+	console.log("Switched Blog Count :"+blog_count);
+	console.log("VWM Output: VW1 is "+ifOneHaveOpen+"  VW2 is "+ifTwoHaveOpen);
 }
-function viewClose(closeNumber){
-	blog_count--;
-	if(closeNumber==1){
-		HideOne();
-		ifOneHaveOpen=false;
-		if(blog_count!=0){
-			MaxTwo();
-		}else{
-			returnToMain();
-		}
-	}else
-	if(closeNumber==2){
-		HideTwo();
-		ifTwoHaveOpen=false;
-		if(blog_count!=0){
-			MaxOne();
-		}else{
-			returnToMain();
-		}
-	}
-	if(blog_count==0){
-		returnToMain();
-	}
-}
-window.onload=function(){
+function InitLoad(){
 	$(protect).hide();
 	returnToMain();
+}
+window.onload=function(){
+	InitLoad();
 }
