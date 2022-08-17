@@ -7,3 +7,13 @@ for (var i=0; i<mobileAgent.length; i++) {
 	isMobile=true;
 }
 console.log("Main Output : isMobile Status : "+isMobile);
+
+function Develop(Options,Opreations){
+	if(Options==1){
+		console.log("Develop Opreation : Toggle:");
+		if(Opreations.includes("UA")){
+			isMobile = !isMobile;
+			console.log("isMobile | Now : "+isMobile);
+		}
+	}
+}
