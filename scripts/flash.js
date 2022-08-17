@@ -41,6 +41,11 @@ function HideTwo(){
 	$(viewIframe2Div).animate({width:"0%",height:"0%"},500);
 }
 function TilingTwos(){
-	$(viewIframe1Div).animate({width:"49%",height:"97%"});
-	$(viewIframe2Div).animate({width:"49%",height:"97%"});
+	if(isMobile==true){
+		$(viewIframe1Div).animate({width:"97%",height:"49%"});
+		$(viewIframe2Div).animate({width:"97%",height:"49%"});
+	}else{
+		$(viewIframe1Div).animate({width:"49%",height:"97%"});
+		$(viewIframe2Div).animate({width:"49%",height:"97%"});
+	}
 }

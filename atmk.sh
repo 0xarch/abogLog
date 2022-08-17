@@ -7,7 +7,8 @@ tmp_pic=$1
 tmp_name=$2
 mv posts_tmp/${tmp_pic##*/} posts_sources/$2
 touch posts/$2.html
-sed -i "10a <div onclick=\"fopen(\'$2.html\')\" id=\"$2\" class=\"blogs\"><img src=\"posts_sources/$2\" width=\"90%\" height=\"90%\" class=\"blog_header_img\"/>$2</div>" index.html
+sed -i "10a <div onclick=\"fopen(\'$2.html\')\" id=\"$2\" class=\"blogs\"><img src=\"posts_sources/$2\" width=\"90%\" height=\"90%\" class=\"blog_header_img\"/><br/>$2</div>" index.html
 sed -i "2a \"$2\"," scripts/search.js
-sed -i "1a </body></html>" posts/$2.html
-sed -i "1a <!DOCTYPE html><head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"../sources/style.css\"></head><body>\n" posts/$2.html
+echo "posts/$2.html"
+echo "<!DOCTYPE html><head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"../sources/style.css\"></head><body>" >>posts/$2.html
+echo "</body></html>" >> posts/$2.html
