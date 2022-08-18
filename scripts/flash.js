@@ -9,8 +9,8 @@ function intoView(){
 	blogFlex("into");
 }
 function returnToMain(){
-	HideOne();
-	HideTwo();
+	VWM_Hide(1);
+	VWM_Hide(2);
 	$(nagi).animate({width:"100%"});
 	$(searchIn).animate({left:"42%",width:"16%"});
 	$(view).hide();
@@ -51,7 +51,11 @@ function SwitchViewButtons(target){
 	if(isMobile){
 		if(target.includes("H")){
 			for(var i=0;i<_viewButtons.length;i++){
-				$(_viewButtons.item(i)).css("height","8%");
+				if(blogCount==1){
+					$(_viewButtons.item(i)).animate({height:"4%"});
+				}else{
+					$(_viewButtons.item(i)).animate({height:"4%"});
+				}
 				console.log("Switched viewButtons : Height");
 			}
 		}

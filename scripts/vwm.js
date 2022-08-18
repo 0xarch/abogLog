@@ -2,11 +2,11 @@ var Width="94%";
 var Height="92%";
 var Width_Tiling="47%";
 
-var viewWindowsContainers=document.getElementByClassName("viewIframeDivs");
-var viewWindowsCores=document.getElementByClassName("viewIframes");
-var viewCounts=viewWindowsContainers.length;
+var viewWindowsContainers=document.getElementsByClassName("viewIframeDivs");
+var viewWindowsCores=document.getElementsByClassName("viewIframes");
+var viewCounts=2;
 var viewWindowsHaveOpened=new Array();
-for(var i=0;i<viewWindowsContainers.length;i++){
+for(var i=0;i<viewCounts;i++){
 	viewWindowsHaveOpened[i]=false;
 }
 var blogCount=0;
@@ -18,24 +18,47 @@ function VOutput(Sprite,Status,Sprite_,Status_){
 	}
 }
 
-function fopen(blog){
-	var target="posts/"+blog+"";
-	var windowTarget=blogCount+1;
+function fopen(arg){
+	var target="posts/"+arg+"";
+	var windowTarget=0;
 	VOutput("OpenWindow",target);
 	if(blogCount<viewCounts){
+		blogCount++;
+		for(var i=0;i<viewCounts;i++){
+			if(viewWindowsHaveOpened[i]==false){
+				windowTarget=i+1;
+				break;
+			}
+		}
 		intoView();
 		VWM_GiveTarget(windowTarget,target);
 		VWM_Show(windowTarget);
-		VWM_Max(windowTarget);
+		if(blogCount>=2){
+			TilingTwos();
+		}else{
+			VWM_Max(windowTarget);
+		}
 		autoSwitch("VbNb");
-		viewWindowsHaveOpened[blogCount]=true;
-		blogCount++;
+		viewWindowsHaveOpened[windowTarget-1]=true;
 	}else{
 		VWM_GiveTarget(1,target);
 	}
 	VOutput("Blog Count",blogCount);
 }
-		
+function viewClose(arg){
+	blogCount--;
+	VWM_Hide(arg);
+	viewWindowsHaveOpened[arg-1]=false;
+	if(blogCount==1){
+		if(arg==1){
+			VWM_Max(2);
+		}else{
+			VWM_Max(1);
+		}
+	}else if(blogCount==0){
+		returnToMain();
+	}
+}	
 function VWM_GiveTarget(argOne,argTwo){
 	viewWindowsCores.item(argOne-1).src=argTwo;
 }
@@ -63,20 +86,7 @@ function TilingTwos(){
 		VOutput("viewWindow<1,2>Container","Tiling");
 	}
 }
-function viewClose(arg){
-	blogCount--;
-	VWM_Hide(arg);
-	viewWindowsHaveOpened[arg-1]=false;
-	if(blogCount==1){
-		if(arg!=1){
-			VWM_Max(2);
-		}else{
-			VWM_Max(1);
-	}else
-	if(blogCount==0){
-		returnToMain();
-	}
-}
+
 //来自CSDN
 function DynamicBackground(){
 	var canvas = document.getElementById("backgroundCanvas");
