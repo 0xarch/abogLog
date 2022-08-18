@@ -1,10 +1,11 @@
-var Width="94%";
-var Height="92%";
-var Width_Tiling="47%";
+var _Width=94;
+var _Height=98;
+var Width=_Width+"%";
+var Height=_Height+"%";
 
 var viewWindowsContainers=document.getElementsByClassName("viewIframeDivs");
 var viewWindowsCores=document.getElementsByClassName("viewIframes");
-var viewCounts=2;
+var viewCounts=4;
 var viewWindowsHaveOpened=new Array();
 for(var i=0;i<viewCounts;i++){
 	viewWindowsHaveOpened[i]=false;
@@ -34,7 +35,7 @@ function fopen(arg){
 		VWM_GiveTarget(windowTarget,target);
 		VWM_Show(windowTarget);
 		if(blogCount>=2){
-			TilingTwos();
+			VWM_Tiling();
 		}else{
 			VWM_Max(windowTarget);
 		}
@@ -50,13 +51,15 @@ function viewClose(arg){
 	VWM_Hide(arg);
 	viewWindowsHaveOpened[arg-1]=false;
 	if(blogCount==1){
-		if(arg==1){
-			VWM_Max(2);
-		}else{
-			VWM_Max(1);
+		for(var i=0;i<viewCounts;i++){
+			if(viewWindowsHaveOpened[i]){
+				VWM_Max(i+1);
+			}
 		}
 	}else if(blogCount==0){
 		returnToMain();
+	}else{
+		VWM_Tiling();
 	}
 }	
 function VWM_GiveTarget(argOne,argTwo){
@@ -71,22 +74,48 @@ function VWM_Max(arg){
 	VOutput("viewWindow <"+arg+"> Container","Max");
 }
 function VWM_Hide(arg){
-	$(viewWindowsContainers.item(arg-1)).animate({width:"0%",height:"0%"});
-	$(viewWindowsContainers.item(arg-1)).hide();
+	if(arg=="all"){
+		for(var i=0;i<viewWindowsContainers.length;i++){
+			$(viewWindowsContainers.item(i)).animate({width:"0%",height:"0%"},GlobalFlashSpeed*10);
+			$(viewWindowsContainers.item(i)).hide();
+		}
+	}else{
+		$(viewWindowsContainers.item(arg-1)).animate({width:"0%",height:"0%"},GlobalFlashSpeed*10);
+		$(viewWindowsContainers.item(arg-1)).hide();
+	}
 	VOutput("viewWindow <"+arg+"> Container","Hide");
 }
-function TilingTwos(){
-	if(isMobile==true){
-		$(viewIframe1Div).animate({width:Width,height:Width_Tiling});
-		$(viewIframe2Div).animate({width:Width,height:Width_Tiling});
-		VOutput("viewWindow<1,2>Container","Vert-Tiling");
+function VWM_Tiling(){
+	var ArgOne,ArgTwo;
+	if((blogCount%2)!=0){
+		ArgOne=blogCount-1;
+		ArgTwo=true;
 	}else{
-		$(viewIframe1Div).animate({width:Width_Tiling,height:Height});
-		$(viewIframe2Div).animate({width:Width_Tiling,height:Height});
-		VOutput("viewWindow<1,2>Container","Tiling");
+		ArgOne=blogCount;
+		ArgTwo=false;
+	}
+	if((blogCount%4)==0){
+		var toWidth=_Width/ArgOne*2+"%";
+	}else{
+		var toWidth=_Width/ArgOne+"%";
+	}
+	if((blogCount%2)==0){
+		var toHeight=_Height/ArgOne*2+"%";
+	}else{
+		var toHeight=_Height/ArgOne+"%";
+	}
+	console.log(toWidth,toHeight);
+	if(ArgTwo==false){
+		for(var i=0;i<viewCounts;i++){
+			$(viewWindowsContainers.item(i)).animate({width:toWidth,height:toHeight});
+		}
+	}else{
+		for(var i=1;i<viewCounts;i++){
+			$(viewWindowsContainers.item(i)).animate({width:toWidth,height:toHeight});
+		}
+		$(viewWindowsContainers.item(0)).animate({width:Width,height:toHeight});
 	}
 }
-
 //来自CSDN
 function DynamicBackground(){
 	var canvas = document.getElementById("backgroundCanvas");
@@ -94,22 +123,19 @@ function DynamicBackground(){
 	var particlesArray = [];
 	canvas.width=innerWidth;
 	canvas.height=innerHeight;
-	var count = parseInt(canvas.width * canvas.height /6000);
+	var count = parseInt(canvas.width * canvas.height /5600);
 	class Particle {
 	    constructor(x, y) {
 	        this.x = x;
 	        this.y = y;
-	        // x，y轴的移动速度  -0.5 -- 0.5
 	        this.directionX = Math.random()-0.5;
 	        this.directionY = Math.random()-0.5;
 	    }
-	
 	    // 更新点的坐标
 	    update() {
 	        this.x += this.directionX;
 	        this.y += this.directionY;
 	    }
-	
 	    // 绘制粒子
 	    draw() {
 	        ctx.beginPath();
@@ -119,7 +145,6 @@ function DynamicBackground(){
 	        ctx.fill();
 	    }
 	}
-	
 	// 创建粒子
 	function createParticle() {
 	    // 生成一个点的随机坐标

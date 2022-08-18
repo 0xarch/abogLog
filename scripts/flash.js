@@ -1,50 +1,45 @@
 var GlobalFlashSpeed=10;
 var _blogs=document.getElementsByClassName("blogs");
+var _blogsHeaderImg=document.getElementsByClassName("blogsHeaderImg");
 var _viewButtons=document.getElementsByClassName("viewButtons");
 var _viewIframeDivs=document.getElementsByClassName("viewIframeDiv");
 function intoView(){
-	$(nagi).animate({width:"10%"});
+	SwitchNagiBar("into");
 	$(view).show();
 	$(searchIn).animate({left:"1%",width:"8%"});
 	blogFlex("into");
 }
 function returnToMain(){
-	VWM_Hide(1);
-	VWM_Hide(2);
-	$(nagi).animate({width:"100%"});
+	VWM_Hide("all");
+	SwitchNagiBar();
 	$(searchIn).animate({left:"42%",width:"16%"});
 	$(view).hide();
 	blogFlex("toMain");
 }
 
-function blogTo(end,type){
-	if(type=="H"){
+function blogTo(arg){
 		for(var i=0;i<_blogs.length;i++){
-			$(_blogs.item(i)).animate({height:end+'%'},GlobalFlashSpeed*80);
+			$(_blogs.item(i)).animate({width:arg},GlobalFlashSpeed*40);
 		}
-	}else{
-		for(var i=0;i<_blogs.length;i++){
-			$(_blogs.item(i)).animate({width:end+'%'},GlobalFlashSpeed*40);
-		}
-	}
 }
-function blogFlex(arg){
-	if(isMobile==true){
-		blogTo(90);
-	}else{
-		if(arg=="into"){
-			blogTo(90);
-		}else{
-			blogTo(15);
-		}
-	}
+function blogHeaderImgTo(){
+	for(var i=0;i<_blogsHeaderImg.length;i++){
+}
 }
 function autoSwitch(args){
 	if(args.includes("Vb")){
 		SwitchViewButtons("HWM");
 	}
-	if(args.includes("Nb")){
-		SwitchNagiBar();
+}
+function blogFlex(arg){
+	if(arg=="into"){
+		blogTo("90%");
+	}else{
+		if(isMobile==true){
+		blogTo("550px");
+		}else{
+			blogTo("15%");
+		}
 	}
 }
 function SwitchViewButtons(target){
@@ -73,13 +68,20 @@ function SwitchViewButtons(target){
 		}
 	}
 }
-function SwitchNagiBar(){
-	if(isMobile){
-		$(nagi).animate({width:"20%"});
-		$(view).animate({width:"80%"});
+function SwitchNagiBar(arg){
+	if(arg=="into"){
+		if(isMobile){
+			$(nagi).animate({width:"20%"});
+			$(view).animate({width:"80%"});
+		}else{
+			$(nagi).animate({width:"10%"});
+			$(view).animate({width:"90%"});
+		}
+	}else{
+		$(nagi).animate({width:"100%"});
 	}
 }
-function ToggleHeader(ifHide){
+function SwitchHeader(ifHide){
 	if(ifHide==false){
 		$(header).show();
 		$(nagi).animate({height:"95%",top:"5%"});
