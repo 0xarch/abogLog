@@ -1,79 +1,56 @@
 var Width="94%";
 var Height="92%";
 var Width_Tiling="47%";
+
+var viewWindowsContainers=document.getElementByClassName("viewIframeDivs");
+var viewWindowsCores=document.getElementByClassName("viewIframes");
+var viewCounts=viewWindowsContainers.length;
+var viewWindowsHaveOpened=new Array();
+for(var i=0;i<viewWindowsContainers.length;i++){
+	viewWindowsHaveOpened[i]=false;
+}
+var blogCount=0;
+
 function VOutput(Sprite,Status,Sprite_,Status_){
-	console.log("VWM Output : [ "+Sprite+" is "+Status+" ]!");
+	console.log("VWM Output : [ "+Sprite+" is "+Status+" ];");
 	if(Sprite_!=undefined){
-		console.log("VWM Output : [ "+Sprite_+" is "+Status_+" ]!");
+		console.log("VWM Output : [ "+Sprite_+" is "+Status_+" ];");
 	}
 }
+
 function fopen(blog){
 	var target="posts/"+blog+"";
+	var windowTarget=blogCount+1;
 	VOutput("OpenWindow",target);
-	if(blog_count==0){
+	if(blogCount<viewCounts){
 		intoView();
-		viewIframe1.src=target;
-		ShowOne();
-		MaxOne();
+		VWM_GiveTarget(windowTarget,target);
+		VWM_Show(windowTarget);
+		VWM_Max(windowTarget);
 		autoSwitch("VbNb");
-		ifOneHaveOpen=true;
-		blog_count=1;
-		
+		viewWindowsHaveOpened[blogCount]=true;
+		blogCount++;
 	}else{
-		if(ifTwoHaveOpen==false){
-			if(viewIframe1.getAttribute("src")==target){
-				VOutput("Warning","Already Opened");
-				return;
-			}
-			ShowTwo();
-			TilingTwos();
-			autoSwitch("VbNb");
-			ifTwoHaveOpen=true;
-			viewIframe2.src=target;
-		}else
-		if(ifOneHaveOpen==false){
-			if(viewIframe2.getAttribute("src")==target){
-				VOutput("Warning","Already Opened");
-				return;
-			}
-			viewIframe1.src=target;
-			ShowOne();
-			autoSwitch("VbNb");
-			TilingTwos();
-			ifOneHaveOpen=true;
-		}else{
-			viewIframe1.src=target;
-		}
-		blog_count=2;
+		VWM_GiveTarget(1,target);
 	}
-	VOutput("Blog Count",blog_count);
-	VOutput("ViewWindow1",ifOneHaveOpen,"ViewWindow2",ifTwoHaveOpen);
+	VOutput("Blog Count",blogCount);
 }
-function ShowOne(){
-	$(viewIframe1Div).show();
-	VOutput("viewWindow<1>Container","Show");
+		
+function VWM_GiveTarget(argOne,argTwo){
+	viewWindowsCores.item(argOne-1).src=argTwo;
 }
-function MaxOne(){
-	$(viewIframe1Div).animate({width:Width,height:Height});
-	VOutput("viewWindow<1>Container","Max");
+function VWM_Show(arg){
+	$(viewWindowsContainers.item(arg-1)).show();
+	VOutput("viewWindow <"+arg+"> Container","Show");
 }
-function HideOne(){
-	$(viewIframe1Div).hide();
-	$(viewIframe1Div).animate({width:"0%",height:"0%"},GlobalFlashSpeed*50);
-	VOutput("viewWindow<1>Container","Hide");
+function VWM_Max(arg){
+	$(viewWindowsContainers.item(arg-1)).animate({width:Width,height:Height});
+	VOutput("viewWindow <"+arg+"> Container","Max");
 }
-function ShowTwo(){
-	$(viewIframe2Div).show();
-	VOutput("viewWindow<2>Container","Show");
-}
-function MaxTwo(){
-	$(viewIframe2Div).animate({width:Width,height:Height});
-	VOutput("viewWindow<2>Container","Max");
-}
-function HideTwo(){
-	$(viewIframe2Div).hide();
-	$(viewIframe2Div).animate({width:"0%",height:"0%"},GlobalFlashSpeed*50);
-	VOutput("viewWindow<2>Container","Hide");
+function VWM_Hide(arg){
+	$(viewWindowsContainers.item(arg-1)).animate({width:"0%",height:"0%"});
+	$(viewWindowsContainers.item(arg-1)).hide();
+	VOutput("viewWindow <"+arg+"> Container","Hide");
 }
 function TilingTwos(){
 	if(isMobile==true){
@@ -86,31 +63,20 @@ function TilingTwos(){
 		VOutput("viewWindow<1,2>Container","Tiling");
 	}
 }
-function viewClose(closeNumber){
-	blog_count--;
-	if(closeNumber==1){
-		HideOne();
-		ifOneHaveOpen=false;
-		if(blog_count!=0){
-			MaxTwo();
+function viewClose(arg){
+	blogCount--;
+	VWM_Hide(arg);
+	viewWindowsHaveOpened[arg-1]=false;
+	if(blogCount==1){
+		if(arg!=1){
+			VWM_Max(2);
 		}else{
-			returnToMain();
-		}
+			VWM_Max(1);
 	}else
-	if(closeNumber==2){
-		HideTwo();
-		ifTwoHaveOpen=false;
-		if(blog_count!=0){
-			MaxOne();
-		}else{
-			returnToMain();
-		}
-	}
-	if(blog_count==0){
+	if(blogCount==0){
 		returnToMain();
 	}
 }
-
 //来自CSDN
 function DynamicBackground(){
 	var canvas = document.getElementById("backgroundCanvas");
@@ -180,7 +146,6 @@ function DynamicBackground(){
 	        }
 	    }
 	}
-	
 	function draw() {
 	    // 首先清空画布
 	    ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -188,11 +153,9 @@ function DynamicBackground(){
 	    if(particlesArray.length < count) {
 	        createParticle();
 	    }
-	
 	    // 处理粒子
 	    handleParticle();
 	}
-	
 	// 设置定时器
 	setInterval(draw, 10);
 }

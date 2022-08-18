@@ -11,4 +11,4 @@ sed -i "10a <div onclick=\"fopen(\'$2.html\')\" id=\"$2\" class=\"blogs\"><img s
 sed -i "2a \"$2\"," scripts/search.js
 echo "posts/$2.html"
 echo "<!DOCTYPE html><head><meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"../sources/style.css\"></head><body>" >>posts/$2.html
-echo "</body></html>" >> posts/$2.html
+echo "<br/></body></html>" >> posts/$2.html

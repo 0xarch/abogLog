@@ -1,4 +1,4 @@
-var GlobalFlashSpeed=20;
+var GlobalFlashSpeed=10;
 var _blogs=document.getElementsByClassName("blogs");
 var _viewButtons=document.getElementsByClassName("viewButtons");
 var _viewIframeDivs=document.getElementsByClassName("viewIframeDiv");
